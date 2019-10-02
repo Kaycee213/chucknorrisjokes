@@ -9,13 +9,13 @@ namespace ChuckNorrisJokesLibrary
 {
     public class JokeGenerator
     {
-        public async Task<string> GetCategories()
+        public async Task<string[]> GetCategories()
         {
             HttpClient client = new HttpClient();
 
             string categoryString = await client.GetStringAsync("https://api.chucknorris.io/jokes/categories");
 
-            var categories = JsonConvert.DeserializeObject<Joke>(categoryString);
+            var categories = JsonConvert.DeserializeObject<string[]>(categoryString);
 
             return categories;
         }
